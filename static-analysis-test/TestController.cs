@@ -21,6 +21,7 @@ namespace static_analysis_test
         }
 
         [HttpPost]
+        [IgnoreAntiforgeryToken]
         public IActionResult XsrfVulnerability(string x)
         {
             // Textbook XSRF/CSRF vulnerability
