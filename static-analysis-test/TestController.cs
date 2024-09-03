@@ -40,5 +40,17 @@ namespace static_analysis_test
             System.IO.File.WriteAllBytes("C:/test.xyz", Encoding.UTF8.GetBytes(arg));
         }
 
+        [HttpGet]
+        public IActionResult BufferOverflow(string x)
+        {
+            // This would be a buffer overflow if it weren't for 
+            char[] s = new char[256];
+            for(int i = 0; i < x.Length; i++)
+            {
+                s[i] = x[i];
+            }
+            return Ok();
+        }
+
     }
 }
